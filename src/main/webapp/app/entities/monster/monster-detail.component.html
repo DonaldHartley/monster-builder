@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="monster">
+            <h2><span>Monster</span> {{ monster.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{ monster.name }}</span>
+                </dd>
+                <dt><span>Creator Id</span></dt>
+                <dd>
+                    <span>{{ monster.creatorId }}</span>
+                </dd>
+                <dt><span>Basetype</span></dt>
+                <dd>
+                    <div *ngIf="monster.basetype">
+                        <a [routerLink]="['/basetype', monster.basetype?.id, 'view']">{{ monster.basetype?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/monster', monster.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

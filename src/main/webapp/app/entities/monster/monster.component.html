@@ -1,0 +1,69 @@
+<div>
+    <h2 id="page-heading">
+        <span>Monsters</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-monster" [routerLink]="['/monster/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Monster
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="monsters?.length === 0">
+        <span>No monsters found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="monsters?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Creator Id</span></th>
+                    <th scope="col" ><span>Basetype</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let monster of monsters ;trackBy: trackId">
+                    <td><a [routerLink]="['/monster', monster.id, 'view']">{{ monster.id }}</a></td>
+                    <td>{{ monster.name }}</td>
+                    <td>{{ monster.creatorId }}</td>
+                    <td>
+                        <div *ngIf="monster.basetype">
+                            <a [routerLink]="['/basetype', monster.basetype?.id, 'view']" >{{ monster.basetype?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/monster', monster.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/monster', monster.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(monster)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
