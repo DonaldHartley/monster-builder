@@ -5,7 +5,6 @@
 
     <div class="col-md-9">
         <h1 class="display-4">Monster Builder</h1>
-
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
@@ -21,10 +20,6 @@
                 <a class="alert-link" routerLink="account/register">Register a new account</a>
             </div>
         </div>
-
-        <jhi-monster>
-
-        </jhi-monster>
 
         <p>
             If you have any question on JHipster:
