@@ -4,9 +4,7 @@
     </div>
 
     <div class="col-md-9">
-        <h1 class="display-4">Welcome, Java Hipster!</h1>
-
-        <p class="lead">This is your homepage</p>
+        <h1 class="display-4">Monster Builder</h1>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
@@ -24,10 +22,13 @@
             </div>
         </div>
 
+        <jhi-monster>
+
+        </jhi-monster>
+
         <p>
             If you have any question on JHipster:
         </p>
-
         <ul>
             <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>
             <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a></li>
@@ -35,9 +36,5 @@
             <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a></li>
             <li><a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on Twitter</a></li>
         </ul>
-
-        <p>
-            <span>If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
-        </p>
     </div>
 </div>
