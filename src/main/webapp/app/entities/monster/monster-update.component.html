@@ -34,10 +34,46 @@
                 </div>
 
                 <div class="form-group">
+                    <label class="form-control-label" for="field_str">Str</label>
+                    <input type="number" class="form-control" name="str" id="field_str"
+                           formControlName="str"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_con">Con</label>
+                    <input type="number" class="form-control" name="con" id="field_con"
+                           formControlName="con"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dex">Dex</label>
+                    <input type="number" class="form-control" name="dex" id="field_dex"
+                           formControlName="dex"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_intl">Intl</label>
+                    <input type="number" class="form-control" name="intl" id="field_intl"
+                           formControlName="intl"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_wis">Wis</label>
+                    <input type="number" class="form-control" name="wis" id="field_wis"
+                           formControlName="wis"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cha">Cha</label>
+                    <input type="number" class="form-control" name="cha" id="field_cha"
+                           formControlName="cha"/>
+                </div>
+
+                <div class="form-group">
                     <label class="form-control-label" for="field_basetype">Basetype</label>
                     <select class="form-control" id="field_basetype" name="basetype" formControlName="basetype">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="basetypeOption.id === editForm.get('basetype')!.value?.id ? editForm.get('basetype')!.value : basetypeOption" *ngFor="let basetypeOption of basetypes; trackBy: trackById">{{ basetypeOption.id }}</option>
+                        <option [ngValue]="basetypeOption.id === editForm.get('basetype')!.value?.id ? editForm.get('basetype')!.value : basetypeOption" *ngFor="let basetypeOption of basetypes; trackBy: trackById">{{ basetypeOption.name }}: {{ basetypeOption.description }}</option>
                     </select>
                 </div>
             </div>

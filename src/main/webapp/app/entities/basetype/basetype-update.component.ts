@@ -17,7 +17,8 @@ export class BasetypeUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    name: [null, [Validators.required, Validators.maxLength(255)]]
+    name: [null, [Validators.required, Validators.maxLength(255)]],
+    description: [null, [Validators.required, Validators.maxLength(2000)]]
   });
 
   constructor(protected basetypeService: BasetypeService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
@@ -31,7 +32,8 @@ export class BasetypeUpdateComponent implements OnInit {
   updateForm(basetype: IBasetype): void {
     this.editForm.patchValue({
       id: basetype.id,
-      name: basetype.name
+      name: basetype.name,
+      description: basetype.description
     });
   }
 
@@ -53,7 +55,8 @@ export class BasetypeUpdateComponent implements OnInit {
     return {
       ...new Basetype(),
       id: this.editForm.get(['id'])!.value,
-      name: this.editForm.get(['name'])!.value
+      name: this.editForm.get(['name'])!.value,
+      description: this.editForm.get(['description'])!.value
     };
   }
 

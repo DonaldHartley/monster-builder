@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(MonsterService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Monster(0, 'AAAAAAA', 0);
+      elemDefault = new Monster(0, 'AAAAAAA', 0, 0, 0, 0, 0, 0, 0);
     });
 
     describe('Service methods', () => {
@@ -55,7 +55,13 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            creatorId: 1
+            creatorId: 1,
+            str: 1,
+            con: 1,
+            dex: 1,
+            intl: 1,
+            wis: 1,
+            cha: 1
           },
           elemDefault
         );
@@ -73,7 +79,13 @@ describe('Service Tests', () => {
         const returnedFromService = Object.assign(
           {
             name: 'BBBBBB',
-            creatorId: 1
+            creatorId: 1,
+            str: 1,
+            con: 1,
+            dex: 1,
+            intl: 1,
+            wis: 1,
+            cha: 1
           },
           elemDefault
         );

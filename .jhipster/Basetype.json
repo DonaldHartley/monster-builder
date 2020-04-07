@@ -9,6 +9,15 @@
                 "maxlength"
             ],
             "fieldValidateRulesMaxlength": "255"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": "2000"
         }
     ],
     "relationships": [],
@@ -21,5 +30,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

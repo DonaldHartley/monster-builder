@@ -25,6 +25,11 @@ public class Basetype implements Serializable {
     @Column(name = "name", length = 255, nullable = false)
     private String name;
 
+    @NotNull
+    @Size(max = 2000)
+    @Column(name = "description", length = 2000, nullable = false)
+    private String description;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -45,6 +50,19 @@ public class Basetype implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Basetype description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -69,6 +87,7 @@ public class Basetype implements Serializable {
         return "Basetype{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
+            ", description='" + getDescription() + "'" +
             "}";
     }
 }

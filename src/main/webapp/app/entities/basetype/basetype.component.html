@@ -24,6 +24,7 @@
                 <tr>
                     <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Description</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -31,6 +32,7 @@
                 <tr *ngFor="let basetype of basetypes ;trackBy: trackId">
                     <td><a [routerLink]="['/basetype', basetype.id, 'view']">{{ basetype.id }}</a></td>
                     <td>{{ basetype.name }}</td>
+                    <td>{{ basetype.description }}</td>
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="submit"

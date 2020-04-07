@@ -28,6 +28,24 @@ public class Monster implements Serializable {
     @Column(name = "creator_id")
     private Long creatorId;
 
+    @Column(name = "str")
+    private Integer str;
+
+    @Column(name = "con")
+    private Integer con;
+
+    @Column(name = "dex")
+    private Integer dex;
+
+    @Column(name = "intl")
+    private Integer intl;
+
+    @Column(name = "wis")
+    private Integer wis;
+
+    @Column(name = "cha")
+    private Integer cha;
+
     @OneToOne
     @JoinColumn(unique = true)
     private Basetype basetype;
@@ -67,6 +85,84 @@ public class Monster implements Serializable {
         this.creatorId = creatorId;
     }
 
+    public Integer getStr() {
+        return str;
+    }
+
+    public Monster str(Integer str) {
+        this.str = str;
+        return this;
+    }
+
+    public void setStr(Integer str) {
+        this.str = str;
+    }
+
+    public Integer getCon() {
+        return con;
+    }
+
+    public Monster con(Integer con) {
+        this.con = con;
+        return this;
+    }
+
+    public void setCon(Integer con) {
+        this.con = con;
+    }
+
+    public Integer getDex() {
+        return dex;
+    }
+
+    public Monster dex(Integer dex) {
+        this.dex = dex;
+        return this;
+    }
+
+    public void setDex(Integer dex) {
+        this.dex = dex;
+    }
+
+    public Integer getIntl() {
+        return intl;
+    }
+
+    public Monster intl(Integer intl) {
+        this.intl = intl;
+        return this;
+    }
+
+    public void setIntl(Integer intl) {
+        this.intl = intl;
+    }
+
+    public Integer getWis() {
+        return wis;
+    }
+
+    public Monster wis(Integer wis) {
+        this.wis = wis;
+        return this;
+    }
+
+    public void setWis(Integer wis) {
+        this.wis = wis;
+    }
+
+    public Integer getCha() {
+        return cha;
+    }
+
+    public Monster cha(Integer cha) {
+        this.cha = cha;
+        return this;
+    }
+
+    public void setCha(Integer cha) {
+        this.cha = cha;
+    }
+
     public Basetype getBasetype() {
         return basetype;
     }
@@ -103,6 +199,12 @@ public class Monster implements Serializable {
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", creatorId=" + getCreatorId() +
+            ", str=" + getStr() +
+            ", con=" + getCon() +
+            ", dex=" + getDex() +
+            ", intl=" + getIntl() +
+            ", wis=" + getWis() +
+            ", cha=" + getCha() +
             "}";
     }
 }

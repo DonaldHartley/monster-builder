@@ -16,10 +16,34 @@
                 <dd>
                     <span>{{ monster.creatorId }}</span>
                 </dd>
+                <dt><span>Str</span></dt>
+                <dd>
+                    <span>{{ monster.str }}</span>
+                </dd>
+                <dt><span>Con</span></dt>
+                <dd>
+                    <span>{{ monster.con }}</span>
+                </dd>
+                <dt><span>Dex</span></dt>
+                <dd>
+                    <span>{{ monster.dex }}</span>
+                </dd>
+                <dt><span>Intl</span></dt>
+                <dd>
+                    <span>{{ monster.intl }}</span>
+                </dd>
+                <dt><span>Wis</span></dt>
+                <dd>
+                    <span>{{ monster.wis }}</span>
+                </dd>
+                <dt><span>Cha</span></dt>
+                <dd>
+                    <span>{{ monster.cha }}</span>
+                </dd>
                 <dt><span>Basetype</span></dt>
                 <dd>
                     <div *ngIf="monster.basetype">
-                        <a [routerLink]="['/basetype', monster.basetype?.id, 'view']">{{ monster.basetype?.id }}</a>
+                        <a [routerLink]="['/basetype', monster.basetype?.id, 'view']">{{ monster.basetype?.name }}</a>
                     </div>
                 </dd>
             </dl>

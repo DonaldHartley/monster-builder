@@ -36,6 +36,9 @@ public class BasetypeResourceIT {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
+
     @Autowired
     private BasetypeRepository basetypeRepository;
 
@@ -78,7 +81,8 @@ public class BasetypeResourceIT {
      */
     public static Basetype createEntity(EntityManager em) {
         Basetype basetype = new Basetype()
-            .name(DEFAULT_NAME);
+            .name(DEFAULT_NAME)
+            .description(DEFAULT_DESCRIPTION);
         return basetype;
     }
     /**
@@ -89,7 +93,8 @@ public class BasetypeResourceIT {
      */
     public static Basetype createUpdatedEntity(EntityManager em) {
         Basetype basetype = new Basetype()
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION);
         return basetype;
     }
 
@@ -114,6 +119,7 @@ public class BasetypeResourceIT {
         assertThat(basetypeList).hasSize(databaseSizeBeforeCreate + 1);
         Basetype testBasetype = basetypeList.get(basetypeList.size() - 1);
         assertThat(testBasetype.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testBasetype.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
 
     @Test
@@ -156,6 +162,24 @@ public class BasetypeResourceIT {
 
     @Test
     @Transactional
+    public void checkDescriptionIsRequired() throws Exception {
+        int databaseSizeBeforeTest = basetypeRepository.findAll().size();
+        // set the field null
+        basetype.setDescription(null);
+
+        // Create the Basetype, which fails.
+
+        restBasetypeMockMvc.perform(post("/api/basetypes")
+            .contentType(TestUtil.APPLICATION_JSON)
+            .content(TestUtil.convertObjectToJsonBytes(basetype)))
+            .andExpect(status().isBadRequest());
+
+        List<Basetype> basetypeList = basetypeRepository.findAll();
+        assertThat(basetypeList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllBasetypes() throws Exception {
         // Initialize the database
         basetypeRepository.saveAndFlush(basetype);
@@ -165,7 +189,8 @@ public class BasetypeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(basetype.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)));
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION)));
     }
     
     @Test
@@ -179,7 +204,8 @@ public class BasetypeResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(basetype.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME));
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION));
     }
 
     @Test
@@ -203,7 +229,8 @@ public class BasetypeResourceIT {
         // Disconnect from session so that the updates on updatedBasetype are not directly saved in db
         em.detach(updatedBasetype);
         updatedBasetype
-            .name(UPDATED_NAME);
+            .name(UPDATED_NAME)
+            .description(UPDATED_DESCRIPTION);
 
         restBasetypeMockMvc.perform(put("/api/basetypes")
             .contentType(TestUtil.APPLICATION_JSON)
@@ -215,6 +242,7 @@ public class BasetypeResourceIT {
         assertThat(basetypeList).hasSize(databaseSizeBeforeUpdate);
         Basetype testBasetype = basetypeList.get(basetypeList.size() - 1);
         assertThat(testBasetype.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testBasetype.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
 
     @Test

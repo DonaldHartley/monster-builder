@@ -23,6 +23,12 @@ export class MonsterUpdateComponent implements OnInit {
     id: [],
     name: [null, [Validators.required, Validators.maxLength(255)]],
     creatorId: [],
+    str: [],
+    con: [],
+    dex: [],
+    intl: [],
+    wis: [],
+    cha: [],
     basetype: []
   });
 
@@ -66,6 +72,12 @@ export class MonsterUpdateComponent implements OnInit {
       id: monster.id,
       name: monster.name,
       creatorId: monster.creatorId,
+      str: monster.str,
+      con: monster.con,
+      dex: monster.dex,
+      intl: monster.intl,
+      wis: monster.wis,
+      cha: monster.cha,
       basetype: monster.basetype
     });
   }
@@ -90,6 +102,12 @@ export class MonsterUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       name: this.editForm.get(['name'])!.value,
       creatorId: this.editForm.get(['creatorId'])!.value,
+      str: this.editForm.get(['str'])!.value,
+      con: this.editForm.get(['con'])!.value,
+      dex: this.editForm.get(['dex'])!.value,
+      intl: this.editForm.get(['intl'])!.value,
+      wis: this.editForm.get(['wis'])!.value,
+      cha: this.editForm.get(['cha'])!.value,
       basetype: this.editForm.get(['basetype'])!.value
     };
   }

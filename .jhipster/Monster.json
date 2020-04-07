@@ -13,6 +13,30 @@
         {
             "fieldName": "creatorId",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "str",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "con",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dex",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "intl",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "wis",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "cha",
+            "fieldType": "Integer"
         }
     ],
     "relationships": [
@@ -34,5 +58,7 @@
     "fluentMethods": true,
     "readOnly": false,
     "clientRootFolder": "",
-    "applications": "*"
+    "applications": "*",
+    "searchEngine": false,
+    "databaseType": "sql"
 }

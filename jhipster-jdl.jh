@@ -1,14 +1,21 @@
 entity Monster {
 	name String required maxlength(255),
-    creatorId Long
+    creatorId Long,
+    str Integer,
+    con Integer,
+    dex Integer,
+    intl Integer,
+    wis Integer,
+    cha Integer
 }
 
 entity Basetype{
-	name String required maxlength(255)
+	name String required maxlength(255),
+    description String required maxlength (2000)
 }
 
 relationship OneToOne {
-    Monster{basetype} to Basetype,
+    Monster{basetype} to Basetype
 }
 
 // Use Data Transfert Objects (DTO)

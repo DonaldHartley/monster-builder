@@ -39,6 +39,24 @@ public class MonsterResourceIT {
     private static final Long DEFAULT_CREATOR_ID = 1L;
     private static final Long UPDATED_CREATOR_ID = 2L;
 
+    private static final Integer DEFAULT_STR = 1;
+    private static final Integer UPDATED_STR = 2;
+
+    private static final Integer DEFAULT_CON = 1;
+    private static final Integer UPDATED_CON = 2;
+
+    private static final Integer DEFAULT_DEX = 1;
+    private static final Integer UPDATED_DEX = 2;
+
+    private static final Integer DEFAULT_INTL = 1;
+    private static final Integer UPDATED_INTL = 2;
+
+    private static final Integer DEFAULT_WIS = 1;
+    private static final Integer UPDATED_WIS = 2;
+
+    private static final Integer DEFAULT_CHA = 1;
+    private static final Integer UPDATED_CHA = 2;
+
     @Autowired
     private MonsterRepository monsterRepository;
 
@@ -82,7 +100,13 @@ public class MonsterResourceIT {
     public static Monster createEntity(EntityManager em) {
         Monster monster = new Monster()
             .name(DEFAULT_NAME)
-            .creatorId(DEFAULT_CREATOR_ID);
+            .creatorId(DEFAULT_CREATOR_ID)
+            .str(DEFAULT_STR)
+            .con(DEFAULT_CON)
+            .dex(DEFAULT_DEX)
+            .intl(DEFAULT_INTL)
+            .wis(DEFAULT_WIS)
+            .cha(DEFAULT_CHA);
         return monster;
     }
     /**
@@ -94,7 +118,13 @@ public class MonsterResourceIT {
     public static Monster createUpdatedEntity(EntityManager em) {
         Monster monster = new Monster()
             .name(UPDATED_NAME)
-            .creatorId(UPDATED_CREATOR_ID);
+            .creatorId(UPDATED_CREATOR_ID)
+            .str(UPDATED_STR)
+            .con(UPDATED_CON)
+            .dex(UPDATED_DEX)
+            .intl(UPDATED_INTL)
+            .wis(UPDATED_WIS)
+            .cha(UPDATED_CHA);
         return monster;
     }
 
@@ -120,6 +150,12 @@ public class MonsterResourceIT {
         Monster testMonster = monsterList.get(monsterList.size() - 1);
         assertThat(testMonster.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMonster.getCreatorId()).isEqualTo(DEFAULT_CREATOR_ID);
+        assertThat(testMonster.getStr()).isEqualTo(DEFAULT_STR);
+        assertThat(testMonster.getCon()).isEqualTo(DEFAULT_CON);
+        assertThat(testMonster.getDex()).isEqualTo(DEFAULT_DEX);
+        assertThat(testMonster.getIntl()).isEqualTo(DEFAULT_INTL);
+        assertThat(testMonster.getWis()).isEqualTo(DEFAULT_WIS);
+        assertThat(testMonster.getCha()).isEqualTo(DEFAULT_CHA);
     }
 
     @Test
@@ -172,7 +208,13 @@ public class MonsterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(monster.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
-            .andExpect(jsonPath("$.[*].creatorId").value(hasItem(DEFAULT_CREATOR_ID.intValue())));
+            .andExpect(jsonPath("$.[*].creatorId").value(hasItem(DEFAULT_CREATOR_ID.intValue())))
+            .andExpect(jsonPath("$.[*].str").value(hasItem(DEFAULT_STR)))
+            .andExpect(jsonPath("$.[*].con").value(hasItem(DEFAULT_CON)))
+            .andExpect(jsonPath("$.[*].dex").value(hasItem(DEFAULT_DEX)))
+            .andExpect(jsonPath("$.[*].intl").value(hasItem(DEFAULT_INTL)))
+            .andExpect(jsonPath("$.[*].wis").value(hasItem(DEFAULT_WIS)))
+            .andExpect(jsonPath("$.[*].cha").value(hasItem(DEFAULT_CHA)));
     }
     
     @Test
@@ -187,7 +229,13 @@ public class MonsterResourceIT {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(monster.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
-            .andExpect(jsonPath("$.creatorId").value(DEFAULT_CREATOR_ID.intValue()));
+            .andExpect(jsonPath("$.creatorId").value(DEFAULT_CREATOR_ID.intValue()))
+            .andExpect(jsonPath("$.str").value(DEFAULT_STR))
+            .andExpect(jsonPath("$.con").value(DEFAULT_CON))
+            .andExpect(jsonPath("$.dex").value(DEFAULT_DEX))
+            .andExpect(jsonPath("$.intl").value(DEFAULT_INTL))
+            .andExpect(jsonPath("$.wis").value(DEFAULT_WIS))
+            .andExpect(jsonPath("$.cha").value(DEFAULT_CHA));
     }
 
     @Test
@@ -212,7 +260,13 @@ public class MonsterResourceIT {
         em.detach(updatedMonster);
         updatedMonster
             .name(UPDATED_NAME)
-            .creatorId(UPDATED_CREATOR_ID);
+            .creatorId(UPDATED_CREATOR_ID)
+            .str(UPDATED_STR)
+            .con(UPDATED_CON)
+            .dex(UPDATED_DEX)
+            .intl(UPDATED_INTL)
+            .wis(UPDATED_WIS)
+            .cha(UPDATED_CHA);
 
         restMonsterMockMvc.perform(put("/api/monsters")
             .contentType(TestUtil.APPLICATION_JSON)
@@ -225,6 +279,12 @@ public class MonsterResourceIT {
         Monster testMonster = monsterList.get(monsterList.size() - 1);
         assertThat(testMonster.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMonster.getCreatorId()).isEqualTo(UPDATED_CREATOR_ID);
+        assertThat(testMonster.getStr()).isEqualTo(UPDATED_STR);
+        assertThat(testMonster.getCon()).isEqualTo(UPDATED_CON);
+        assertThat(testMonster.getDex()).isEqualTo(UPDATED_DEX);
+        assertThat(testMonster.getIntl()).isEqualTo(UPDATED_INTL);
+        assertThat(testMonster.getWis()).isEqualTo(UPDATED_WIS);
+        assertThat(testMonster.getCha()).isEqualTo(UPDATED_CHA);
     }
 
     @Test

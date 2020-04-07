@@ -20,7 +20,7 @@ describe('Service Tests', () => {
       service = injector.get(BasetypeService);
       httpMock = injector.get(HttpTestingController);
 
-      elemDefault = new Basetype(0, 'AAAAAAA');
+      elemDefault = new Basetype(0, 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -54,7 +54,8 @@ describe('Service Tests', () => {
       it('should update a Basetype', () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB'
+            name: 'BBBBBB',
+            description: 'BBBBBB'
           },
           elemDefault
         );
@@ -71,7 +72,8 @@ describe('Service Tests', () => {
       it('should return a list of Basetype', () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB'
+            name: 'BBBBBB',
+            description: 'BBBBBB'
           },
           elemDefault
         );

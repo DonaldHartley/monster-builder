@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         //jhipster-needle-gradle-buildscript-dependency - JHipster will add additional gradle build script plugins here
+        classpath 'org.liquibase:liquibase-gradle-plugin:1.1.1'
     }
 }
 
@@ -136,22 +137,23 @@ liquibase {
     activities {
         main {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/monsterbuilder"
-            username "monsterbuilder"
-            password ""
+            url "jdbc:postgresql://localhost:5432/postgres"
+            username "monsterBuilderDev"
+            password "secureprojectpassword"
             changeLogFile "src/main/resources/config/liquibase/master.xml"
-            defaultSchemaName ""
+            referenceUrl "hibernate:spring:com.monsterbuilder.domain?dialect=io.github.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
+            defaultSchemaName "public"
             logLevel "debug"
             classpath "src/main/resources/"
         }
         diffLog {
             driver "org.postgresql.Driver"
-            url "jdbc:postgresql://localhost:5432/monsterbuilder"
-            username "monsterbuilder"
-            password ""
+            url "jdbc:postgresql://localhost:5432/postgres"
+            username "monsterBuilderDev"
+            password "secureprojectpassword"
             changeLogFile project.ext.diffChangelogFile
             referenceUrl "hibernate:spring:com.monsterbuilder.domain?dialect=io.github.jhipster.domain.util.FixedPostgreSQL10Dialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy"
-            defaultSchemaName ""
+            defaultSchemaName "public"
             logLevel "debug"
             classpath "$buildDir/classes/java/main"
         }

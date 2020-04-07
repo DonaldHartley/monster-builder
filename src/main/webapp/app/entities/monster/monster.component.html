@@ -22,25 +22,37 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>
-                    <!-- <th scope="col" ><span>ID</span></th> -->
+                    <th scope="col" ><span>ID</span></th>
                     <th scope="col" ><span>Name</span></th>
-                    <!-- <th scope="col" ><span>Creator Id</span></th> -->
+                    <th scope="col" ><span>Creator Id</span></th>
+                    <th scope="col" ><span>Str</span></th>
+                    <th scope="col" ><span>Con</span></th>
+                    <th scope="col" ><span>Dex</span></th>
+                    <th scope="col" ><span>Intl</span></th>
+                    <th scope="col" ><span>Wis</span></th>
+                    <th scope="col" ><span>Cha</span></th>
                     <th scope="col" ><span>Basetype</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let monster of monsters ;trackBy: trackId">
-                    <!-- <td><a [routerLink]="['/monster', monster.id, 'view']">{{ monster.id }}</a></td> -->
+                    <td><a [routerLink]="['/monster', monster.id, 'view']">{{ monster.id }}</a></td>
                     <td>{{ monster.name }}</td>
-                    <!-- <td>{{ monster.creatorId }}</td> -->
+                    <td>{{ monster.creatorId }}</td>
+                    <td>{{ monster.str }}</td>
+                    <td>{{ monster.con }}</td>
+                    <td>{{ monster.dex }}</td>
+                    <td>{{ monster.intl }}</td>
+                    <td>{{ monster.wis }}</td>
+                    <td>{{ monster.cha }}</td>
                     <td>
                         <div *ngIf="monster.basetype">
-                            <a [routerLink]="['/basetype', monster.basetype?.name, 'view']" >{{ monster.basetype?.name }}</a>
+                            <a [routerLink]="['/basetype', monster.basetype?.id, 'view']" >{{ monster.basetype?.name }}</a>
                         </div>
                     </td>
                     <td class="text-right">
-                        <!-- <div class="btn-group">
+                        <div class="btn-group">
                             <button type="submit"
                                     [routerLink]="['/monster', monster.id, 'view']"
                                     class="btn btn-info btn-sm">
@@ -60,7 +72,7 @@
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>
-                        </div> -->
+                        </div>
                     </td>
                 </tr>
             </tbody>
